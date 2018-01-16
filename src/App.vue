@@ -1,13 +1,23 @@
 <template>
   <div id="app">
     <router-view/>
+    <new-components :message="message1" :test="message2"/>
     <img src="./assets/logo.png">
   </div>
 </template>
 
 <script>
+import NewComponents from './components/newComponents'
+
 export default {
-  name: 'app'
+  components: {NewComponents},
+  name: 'app',
+  data () {
+    return {
+      message1: 1993,
+      message2: 1027
+    }
+  }
 }
 </script>
 
