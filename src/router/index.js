@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import childrenView from '@/components/childrenView'
+import learnComponent from '@/components/learnComponent'
 import grandChild from '@/components/grandChild'
 import grandChild2 from '@/components/grandChild2'
 
@@ -27,6 +28,11 @@ export default new Router({
             name: 'grandChild2',
             component: grandChild2
           }]
+        },
+        {
+          path: 'learnComponent',
+          name: 'learnComponent',
+          component: learnComponent
         }
       ]
     }

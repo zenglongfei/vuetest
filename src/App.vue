@@ -1,33 +1,91 @@
 <template>
-  <div id="app">
-    <router-view/>
-    <new-components :message="message1" :test="message2"/>
+  <div id="app" @click="appClick">
     <img src="./assets/logo.png">
+    <h2>MyTest</h2>
+    <time-component :chMsg="msg"/>
+    <number-counter @emitAppClick="zeroNum" :htmlTotal="total"/>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import NewComponents from './components/newComponents'
-
+import TimeComponent from '@/components/timeComponent'
+import NumberCounter from '@/components/numberCounter'
 export default {
-  components: {NewComponents},
   name: 'app',
+  components: {
+    NumberCounter,
+    TimeComponent
+  },
+  watch: {
+    total () {
+      console.log(this.total)
+    }
+  },
   data () {
     return {
-      message1: 1993,
-      message2: 1027
+      total: Number(localStorage.getItem('total')),
+      msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  methods: {
+    appClick () {
+      this.total = Number(localStorage.getItem('total'))
+      this.total += 1
+      localStorage.setItem('total', this.total)
+    },
+    zeroNum () {
+      this.total = 0
     }
   }
 }
 </script>
 
 <style>
+body {
+  margin: 0;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin: 0 18px;
+  height: 100vh;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+  /* .slide-fade-leave-active for below version 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
+}
+.bounce-enter-active {
+  animation: bounce-in .5s;
+}
+.bounce-leave-active {
+  animation: bounce-in .5s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 </style>
