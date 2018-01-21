@@ -2,6 +2,7 @@
   <div id="app" @click="appClick">
     <img src="./assets/logo.png">
     <h2>MyTest</h2>
+    <audio-component/>
     <time-component :chMsg="msg"/>
     <number-counter @emitAppClick="zeroNum" :htmlTotal="total"/>
     <router-view/>
@@ -11,9 +12,11 @@
 <script>
 import TimeComponent from '@/components/timeComponent'
 import NumberCounter from '@/components/numberCounter'
+import AudioComponent from '@/components/audioComponent'
 export default {
   name: 'app',
   components: {
+    AudioComponent,
     NumberCounter,
     TimeComponent
   },
