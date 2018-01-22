@@ -3,14 +3,17 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store/index.js'
+import Vuex from 'vuex'
 
 Vue.config.productionTip = false
+Vue.use(Vuex)
 
 /* eslint-disable no-new */
-let vm = new Vue({
+new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: {App}
+  components: {App},
+  store
 })
-console.log(vm)

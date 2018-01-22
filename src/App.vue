@@ -1,5 +1,6 @@
 <template>
   <div id="app" @click="appClick">
+    <loading-component v-show="isLoading"/>
     <img src="./assets/logo.png">
     <h2>MyTest</h2>
     <audio-component/>
@@ -10,12 +11,16 @@
 </template>
 
 <script>
-import TimeComponent from '@/components/timeComponent'
-import NumberCounter from '@/components/numberCounter'
-import AudioComponent from '@/components/audioComponent'
+import TimeComponent from './components/timeComponent'
+import NumberCounter from './components/numberCounter'
+import AudioComponent from './components/audioComponent'
+import LoadingComponent from './components/loadingComponent'
+import { mapState } from 'vuex'
+
 export default {
   name: 'app',
   components: {
+    LoadingComponent,
     AudioComponent,
     NumberCounter,
     TimeComponent
@@ -24,6 +29,11 @@ export default {
     total () {
       console.log(this.total)
     }
+  },
+  computed: {
+    ...mapState({
+      isLoading: state => state.isLoading
+    })
   },
   data () {
     return {
