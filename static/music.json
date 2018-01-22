@@ -1,0 +1,19 @@
+{
+  "errcode": 0,
+  "errmsg": "success",
+  "data": [
+    {
+      "songName": "双星情歌",
+      "name": "许冠杰",
+      "songUrl": "http://fs.w.kugou.com/201801221513/bf36691a0d7bc76e44160c4e40d7b226/G013/M01/03/03/rYYBAFUPLBGAS8reACuWW_PHbBU401.mp3"
+    }, {
+      "songName": "阿郎恋曲",
+      "name": "许冠杰",
+      "songUrl": "http://fs.w.kugou.com/201801221456/9b6a34949794e8ee1cded080c93537f3/G003/M03/18/03/o4YBAFT-lbWAczK7AExnrrM-K_A688.mp3"
+    }, {
+      "songName": "天才白痴梦",
+      "name": "许冠杰",
+      "songUrl": "http://fs.w.kugou.com/201801221517/247ddfb5bc261400a6d7cf8bcb4efdcb/G010/M03/19/19/qoYBAFULdyCAXquAACRj6k7RGVQ377.mp3"
+    }
+  ]
+}

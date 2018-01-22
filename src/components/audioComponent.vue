@@ -1,6 +1,6 @@
 <template>
   <div>
-    <audio autoplay="autoplay" loop="loop" preload="auto" src="../media/music.mp3">你的浏览器不支持audio</audio>
+    <audio id="player" :controls="controlsShow" :loop="isLoop" preload="auto" :src="songUrl" @ended="musicEnd">你的浏览器不支持audio</audio>
     <div class="animation" @click="startAnimate">
       <img src="../assets/musicicon.png">
     </div>
@@ -9,12 +9,30 @@
 
 <script>
 import $ from 'jquery'
+import http from '../utils/http.js'
+import api from '../utils/api.js'
 export default {
   name: 'audio-component',
+  data () {
+    return {
+      controlsShow: false,
+      isLoop: false,
+      songUrlArr: [],
+      songUrl: ''
+    }
+  },
+  mounted () {
+    // 页面初始化音乐默认暂停
+    $('.animation').css('animation-play-state', 'paused')
+    // 获取音乐地址
+    this.queryMusic()
+    // 请求测试
+    // this.queryTest()
+  },
   methods: {
     startAnimate () {
       let anDiv = $('.animation')
-      let audio = $('audio')[0]
+      let audio = document.getElementById('player')
       if (anDiv.css('animation-play-state') === 'running') {
         anDiv.css('animation-play-state', 'paused')
         audio.pause()
@@ -22,6 +40,36 @@ export default {
         anDiv.css('animation-play-state', 'running')
         audio.play()
       }
+    },
+    queryMusic () {
+      http.axiosQuery({
+        url: '../static/music.json'
+      }, (oData) => {
+        let result = oData.data
+        $.each(result, (i, item) => {
+          this.songUrlArr.push(item.songUrl)
+        })
+        this.songUrl = this.songUrlArr[0]
+      })
+    },
+    queryTest () {
+      http.axiosQuery({
+        url: api.right,
+        baseURL: 'https://cnodejs.org/api/v1'
+      }, (oData) => {
+        console.log(oData)
+      })
+    },
+    musicEnd () {
+      let index = this.songUrlArr.indexOf(this.songUrl)
+      if (index === this.songUrlArr.length) {
+        this.songUrl = this.songUrlArr[0]
+      } else {
+        this.songUrl = this.songUrlArr[index + 1]
+      }
+      setTimeout(() => {
+        document.getElementById('player').play()
+      }, 200)
     }
   }
 }
