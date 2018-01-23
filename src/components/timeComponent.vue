@@ -7,6 +7,7 @@
 </template>
 
 <script>
+  import store from '../store/index.js'
   export default {
     name: 'new-components',
     props: ['chMsg'],
@@ -68,6 +69,7 @@
         minutes = this.addZero(minutes)
         seconds = this.addZero(seconds)
         this.leftTime = days + '天' + hours + '时' + minutes + '分' + seconds + '秒'
+        store.commit('showLoadingHtml', false)
         if (this.remainingTime <= 0) {
           clearInterval(this.countDown)
         }

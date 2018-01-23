@@ -1,6 +1,6 @@
 <template>
   <div id="app" @click="appClick">
-    <loading-component v-show="isLoading"/>
+    <loading-component v-show="(isLoading || isLoadingHtml)"/>
     <img src="./assets/logo.png">
     <h2>MyTest</h2>
     <audio-component/>
@@ -27,12 +27,13 @@ export default {
   },
   watch: {
     total () {
-      console.log(this.total)
+      console.log('total:' + this.total)
     }
   },
   computed: {
     ...mapState({
-      isLoading: state => state.isLoading
+      isLoading: state => state.isLoading,
+      isLoadingHtml: state => state.isLoadingHtml
     })
   },
   data () {

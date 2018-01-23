@@ -2,7 +2,7 @@
   <div>
     <router-link :to="{name: 'grandChild'}" replace>组件一</router-link>
     <router-link :to="{name: 'grandChild2'}" replace>组件二</router-link>
-    <transition name="bounce"  mode="out-in">
+    <transition name="slide-fade"  mode="out-in">
       <router-view/>
     </transition>
   </div>

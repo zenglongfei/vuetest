@@ -1,10 +1,23 @@
 <template>
-  <h2>这是一个组件</h2>
+  <h2 @click="queryTest">axios请求测试</h2>
 </template>
 
 <script>
+  import http from '../utils/http.js'
+  import api from '../utils/api.js'
+
   export default {
-    name: 'grand-child'
+    name: 'grand-child',
+    methods: {
+      queryTest () {
+        http.axiosQuery({
+          url: api.right,
+          baseURL: 'https://cnodejs.org/api/v1'
+        }, (oData) => {
+          console.log(oData)
+        })
+      }
+    }
   }
 </script>
 

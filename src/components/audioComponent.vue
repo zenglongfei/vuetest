@@ -10,7 +10,6 @@
 <script>
 import $ from 'jquery'
 import http from '../utils/http.js'
-import api from '../utils/api.js'
 export default {
   name: 'audio-component',
   data () {
@@ -52,17 +51,9 @@ export default {
         this.songUrl = this.songUrlArr[0]
       })
     },
-    queryTest () {
-      http.axiosQuery({
-        url: api.right,
-        baseURL: 'https://cnodejs.org/api/v1'
-      }, (oData) => {
-        console.log(oData)
-      })
-    },
     musicEnd () {
       let index = this.songUrlArr.indexOf(this.songUrl)
-      if (index === this.songUrlArr.length) {
+      if (index === this.songUrlArr.length - 1) {
         this.songUrl = this.songUrlArr[0]
       } else {
         this.songUrl = this.songUrlArr[index + 1]
