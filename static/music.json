@@ -3,17 +3,21 @@
   "errmsg": "success",
   "data": [
     {
-      "songName": "双星情歌",
-      "name": "许冠杰",
-      "songUrl": "http://fs.w.kugou.com/201801221513/bf36691a0d7bc76e44160c4e40d7b226/G013/M01/03/03/rYYBAFUPLBGAS8reACuWW_PHbBU401.mp3"
+      "songName": "Snowdreams - 纯音乐版",
+      "name": "Bandari",
+      "songUrl": "http://fs.w.kugou.com/201801231120/2f6d2eb2fc5defb41d9847b02baa9281/G010/M03/03/17/Sg0DAFT8LoqActFuAEZvhDOZJtc794.mp3"
     }, {
-      "songName": "阿郎恋曲",
-      "name": "许冠杰",
-      "songUrl": "http://fs.w.kugou.com/201801221456/9b6a34949794e8ee1cded080c93537f3/G003/M03/18/03/o4YBAFT-lbWAczK7AExnrrM-K_A688.mp3"
+      "songName": "故郷の原風景 - 纯音乐版",
+      "name": "宗次郎",
+      "songUrl": "http://fs.w.kugou.com/201801231128/9c39d76f2e830859147716c0c978da84/G004/M01/10/13/RA0DAFS4YtWAFSkBAEUB6UDnWrU223.mp3"
     }, {
-      "songName": "天才白痴梦",
-      "name": "许冠杰",
-      "songUrl": "http://fs.w.kugou.com/201801221517/247ddfb5bc261400a6d7cf8bcb4efdcb/G010/M03/19/19/qoYBAFULdyCAXquAACRj6k7RGVQ377.mp3"
+      "songName": "夜的钢琴曲 - 纯音乐版",
+      "name": "K.Williams",
+      "songUrl": "http://fs.w.kugou.com/201801231154/9fa1cf161f3e64193bdbe27154d3deee/G044/M07/12/17/bA0DAFYlXbyADQ0OAD_kF_ttrUQ939.mp3"
+    }, {
+      "songName": "ふたりの気持ち - 纯音乐版",
+      "name": "和田薫",
+      "songUrl": "http://fs.w.kugou.com/201801231142/49cf86d85d814bace700144198b85ba9/G036/M05/19/1B/ZA0DAFYfPGqAFdtlACbshD0m_pA650.mp3"
     }
   ]
 }

@@ -48,16 +48,11 @@ export default {
         $.each(result, (i, item) => {
           this.songUrlArr.push(item.songUrl)
         })
-        this.songUrl = this.songUrlArr[0]
+        this.songUrl = this.songUrlArr[Math.floor(Math.random() * this.songUrlArr.length)]
       })
     },
     musicEnd () {
-      let index = this.songUrlArr.indexOf(this.songUrl)
-      if (index === this.songUrlArr.length - 1) {
-        this.songUrl = this.songUrlArr[0]
-      } else {
-        this.songUrl = this.songUrlArr[index + 1]
-      }
+      this.songUrl = this.songUrlArr[Math.floor(Math.random() * this.songUrlArr.length)]
       setTimeout(() => {
         document.getElementById('player').play()
       }, 200)
