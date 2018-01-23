@@ -1,6 +1,8 @@
 <template>
   <div>
     <h2>{{chMsg}}</h2>
+    <slot/>
+    <slot name="specificName"/>
     <p>当前时间：<span v-html="nowTime"></span></p>
     <p>距离{{endYear}}年还剩：<span v-html="leftTime"></span></p>
   </div>

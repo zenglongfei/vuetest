@@ -4,7 +4,7 @@
     <img src="./assets/logo.png">
     <h2>MyTest</h2>
     <audio-component/>
-    <time-component :chMsg="msg"/>
+    <time-component :chMsg="msg"><span>这是匿名插槽内容</span><span slot="specificName">这是具名插槽</span></time-component>
     <number-counter @emitAppClick="zeroNum" :htmlTotal="total"/>
     <router-view/>
   </div>
