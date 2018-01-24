@@ -1,7 +1,7 @@
 <template>
   <div id="app" @click="appClick">
     <loading-component v-show="(isLoading || isLoadingHtml)"/>
-    <img src="./assets/logo.png">
+    <!--<img src="./assets/logo.png">-->
     <h2>MyTest</h2>
     <audio-component/>
     <time-component :chMsg="msg"><span>这是匿名插槽内容</span><span slot="specificName">这是具名插槽</span></time-component>

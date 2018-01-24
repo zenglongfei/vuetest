@@ -6,7 +6,7 @@
 
 <script>
   export default {
-    name: 'dynamic-component'
+    name: 'dynamic-component2'
   }
 </script>
 
