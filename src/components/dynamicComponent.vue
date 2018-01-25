@@ -7,22 +7,25 @@
       <p>输入职业：<input v-model="newPeo.job" type="text" placeholder="输入职业"></p>
     </div>
     <button @click="addArr">增加新成员</button>
-    <table border="15">
-      <tr>
+    <transition name="slide-fade" mode="out-in">
+    <transition-group name="slide-fade" tag="table" border="15" mode="out-in" v-if="arr.length > 0">
+      <tr key='trr'>
         <th>名字</th>
         <th>性别</th>
         <th>年龄</th>
         <th>职业</th>
         <th>删除</th>
       </tr>
-      <tr v-for="(item, index) in arr">
+      <tr v-for="(item, index) in arr" :key="item.id">
         <td>{{item.name}}</td>
         <td>{{item.sex}}</td>
         <td>{{item.age}}</td>
         <td>{{item.job}}</td>
         <td @click="delPeo(index)">x</td>
       </tr>
-    </table>
+    </transition-group>
+    <p v-else>没有成员</p>
+    </transition>
   </div>
 </template>
 
@@ -32,10 +35,10 @@
     data () {
       return {
         arr: [
-          {name: 'Luffy', sex: '男', age: 18, job: '船长'},
-          {name: 'Sanji', sex: '男', age: 25, job: '厨师'}
+          {id: +new Date() - 1000, name: 'Luffy', sex: '男', age: 18, job: '船长'},
+          {id: +new Date(), name: 'Sanji', sex: '男', age: 25, job: '厨师'}
         ],
-        newPeo: {name: '', sex: '男', age: '', job: ''}
+        newPeo: {id: +new Date() + 1000, name: '', sex: '男', age: '', job: ''}
       }
     },
     methods: {
@@ -53,7 +56,7 @@
           return
         }
         this.arr.unshift(Object.assign({}, this.newPeo))
-        this.newPeo = {name: '', sex: '男', age: '', job: ''}
+        this.newPeo = {id: +new Date(), name: '', sex: '男', age: '', job: ''}
       },
       delPeo (index) {
         this.arr.splice(index, 1)

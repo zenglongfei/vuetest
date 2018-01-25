@@ -42,7 +42,7 @@ export default {
     },
     queryMusic () {
       http.axiosQuery({
-        url: '../static/music.json'
+        url: '../static/json/music.json'
       }, (oData) => {
         let result = oData.data
         $.each(result, (i, item) => {
@@ -53,9 +53,9 @@ export default {
     },
     musicEnd () {
       this.songUrl = this.songUrlArr[Math.floor(Math.random() * this.songUrlArr.length)]
-      setTimeout(() => {
+      this.$nextTick(() => {
         document.getElementById('player').play()
-      }, 200)
+      })
     }
   }
 }

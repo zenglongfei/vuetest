@@ -1,0 +1,23 @@
+{
+  "errcode": 0,
+  "errmsg": "success",
+  "data": [
+    {
+      "songName": "Snowdreams - 纯音乐版",
+      "name": "Bandari",
+      "songUrl": "./static/media/Snowdreams.mp3"
+    }, {
+      "songName": "故郷の原風景 - 纯音乐版",
+      "name": "宗次郎",
+      "songUrl": "./static/media/故郷の原風景.mp3"
+    }, {
+      "songName": "夜的钢琴曲 - 纯音乐版",
+      "name": "K.Williams",
+      "songUrl": "./static/media/夜的钢琴曲.mp3"
+    }, {
+      "songName": "月光の雲海 - 纯音乐版",
+      "name": "久石譲",
+      "songUrl": "./static/media/月光の雲海.mp3"
+    }
+  ]
+}

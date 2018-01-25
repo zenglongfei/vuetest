@@ -12,7 +12,15 @@
   import store from '../store/index.js'
   export default {
     name: 'new-components',
-    props: ['chMsg'],
+    props: {
+      chMsg: {
+        type: String,
+        required: true,
+        validator: function (value) {
+          return ['syncing', 'synced', 'version-conflict', 'error'].indexOf(value) === -1
+        }
+      }
+    },
     mounted () {
       setInterval(() => {
         this.refreshTime()

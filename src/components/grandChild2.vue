@@ -2,9 +2,11 @@
   <div>
     <a @click="showComponent" name="dynamic">动态组件一</a>
     <a @click="showComponent" name="dynamic2">动态组件二</a>
-    <keep-alive>
-      <component :is="show"/>
-    </keep-alive>
+    <transition mode="out-in" name="fade">
+      <keep-alive>
+        <component :is="show"/>
+      </keep-alive>
+    </transition>
   </div>
 </template>
 
