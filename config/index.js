@@ -11,13 +11,13 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      /* '/msps-fstore': {
+      '/msps-fstore': {
         target: 'http://10.2.96.148:8081/msps-fstore/',
         changeOrigin: true, // 跨域配置，只在开发环境有用
         pathRewrite: {
           '^/msps-fstore': '/'
         }
-      } */
+      }
     },
 
     // Various Dev Server settings
