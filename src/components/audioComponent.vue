@@ -1,14 +1,13 @@
 <template>
   <div>
     <audio id="player" :controls="controlsShow" :loop="isLoop" preload="auto" :src="songUrl" @ended="musicEnd">你的浏览器不支持audio</audio>
-    <div class="animation" @click="startAnimate">
+    <div :style='{"animation-play-state" : animationState}' class="animation" @click="startAnimate">
       <img src="../assets/musicicon.png">
     </div>
   </div>
 </template>
 
 <script>
-import $ from 'jquery'
 import http from '../utils/http.js'
 export default {
   name: 'audio-component',
@@ -17,12 +16,11 @@ export default {
       controlsShow: false,
       isLoop: false,
       songUrlArr: [],
-      songUrl: ''
+      songUrl: '',
+      animationState: 'paused'
     }
   },
   mounted () {
-    // 页面初始化音乐默认暂停
-    $('.animation').css('animation-play-state', 'paused')
     // 获取音乐地址
     this.queryMusic()
     // 请求测试
@@ -30,13 +28,12 @@ export default {
   },
   methods: {
     startAnimate () {
-      let anDiv = $('.animation')
       let audio = document.getElementById('player')
-      if (anDiv.css('animation-play-state') === 'running') {
-        anDiv.css('animation-play-state', 'paused')
+      if (this.animationState === 'running') {
+        this.animationState = 'paused'
         audio.pause()
       } else {
-        anDiv.css('animation-play-state', 'running')
+        this.animationState = 'running'
         audio.play()
       }
     },
@@ -45,9 +42,9 @@ export default {
         url: '../static/json/music.json'
       }, (oData) => {
         let result = oData.data
-        $.each(result, (i, item) => {
-          this.songUrlArr.push(item.songUrl)
-        })
+        for (let i = 0; i < result.length; i++) {
+          this.songUrlArr.push(result[i].songUrl)
+        }
         this.songUrl = this.songUrlArr[Math.floor(Math.random() * this.songUrlArr.length)]
       })
     },
