@@ -10,7 +10,15 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      /* '/msps-fstore': {
+        target: 'http://10.2.96.148:8081/msps-fstore/',
+        changeOrigin: true, // 跨域配置，只在开发环境有用
+        pathRewrite: {
+          '^/msps-fstore': '/'
+        }
+      } */
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

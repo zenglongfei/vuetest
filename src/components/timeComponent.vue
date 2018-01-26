@@ -10,6 +10,7 @@
 
 <script>
   import store from '../store/index.js'
+  import { mapState } from 'vuex'
   export default {
     name: 'new-components',
     props: {
@@ -38,7 +39,10 @@
     computed: {
       initDate () {
         return (new Date('yyyy/01/01 00:00:00').setFullYear(this.endYear))
-      }
+      },
+      ...mapState({
+        isLoadingHtml: state => state.isLoadingHtml
+      })
     },
     methods: {
       refreshTime () {
@@ -79,7 +83,9 @@
         minutes = this.addZero(minutes)
         seconds = this.addZero(seconds)
         this.leftTime = days + '天' + hours + '时' + minutes + '分' + seconds + '秒'
-        store.commit('showLoadingHtml', false)
+        if (this.isLoadingHtml) {
+          store.commit('showLoadingHtml', false)
+        }
         if (this.remainingTime <= 0) {
           clearInterval(this.countDown)
         }

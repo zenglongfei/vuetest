@@ -27,7 +27,7 @@ export default {
   },
   watch: {
     total () {
-      console.log('total:' + this.total)
+      console.log(`%ctotal:${this.total}`, 'border: 1px solid red')
     }
   },
   computed: {

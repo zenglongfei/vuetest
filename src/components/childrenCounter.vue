@@ -13,7 +13,7 @@
     methods: {
       counterClick () {
         this.counter += 1
-        this.$emit('emitClick')
+        this.$emit('emitClick', this.counter)
       }
     }
   }

@@ -19,8 +19,9 @@
       }
     },
     methods: {
-      numberClick () {
+      numberClick (data) {
         this.total += 1
+        console.log(data)
       },
       clearNum (e) {
         localStorage.total = 0
