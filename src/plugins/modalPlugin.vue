@@ -1,21 +1,15 @@
 <template>
   <div class="modal-box" v-if="show">
-    <div class="modal-bg"></div>
-    <div class="modal-wrap">
-      <div class="modal-main">
-        <a class="modal-close" @click="cancelModal">
-          <i class="ivu-icon ivu-icon-ios-close-empty"></i>
-        </a>
-        <div class="modal-header">
-          <div class="modal-header-inner">普通的Modal对话框标题</div>
-        </div>
-        <div class="modal-body">
-          <p>对话框内容</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="ivu-btn ivu-btn-text ivu-btn-large" @click="cancelModal"><span>取消</span></button>
-          <button type="button" class="ivu-btn ivu-btn-primary ivu-btn-large" @click="sureModal"><span>确定</span></button>
-        </div>
+    <div class="modal-bg" @touchmove.prevent></div>
+    <div class="modal-main" @touchmove.prevent>
+      <div class="modal-header" v-if="type">
+        <div class="modal-header-inner">{{title}}</div>
+      </div>
+      <div class="modal-body" v-html="content">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="ivu-btn ivu-btn-text ivu-btn-large" @click="cancelModal" v-if="btnShow"><span>{{btn[0]}}</span></button>
+        <button type="button" class="ivu-btn ivu-btn-primary ivu-btn-large" @click="sureModal"><span>{{btn[1] || btn[0]}}</span></button>
       </div>
     </div>
   </div>
@@ -28,7 +22,12 @@
       return {
         show: true,
         cancel: null,
-        sure: null
+        sure: null,
+        type: 1,
+        btn: ['取消', '确定'],
+        btnShow: true,
+        title: '',
+        content: ''
       }
     },
     methods: {
@@ -45,6 +44,9 @@
 </script>
 
 <style scoped>
+  body {
+    height: 100%;
+  }
   .modal-bg {
     position: fixed;
     bottom: 0;
@@ -54,41 +56,17 @@
     height: 100%;
     z-index: 1000;
   }
-  .modal-wrap {
-    position: fixed;
-    overflow: auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    -webkit-overflow-scrolling: touch;
-    outline: 0;
-  }
   .modal-main {
     width: 80%;
-    margin: 0 auto;
-    position: relative;
-    top: 30%;
     background-color: #fff;
     border: 0;
     border-radius: 6px;
     background-clip: padding-box;
-  }
-  .modal-close {
-    font-size: 12px;
-    position: absolute;
-    right: 16px;
-    top: 8px;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  .ivu-icon-ios-close-empty {
-    font-size: 31px;
-    color: #999;
-    transition: color .2s ease;
-    position: relative;
-    top: 1px;
+    position: fixed;
+    top: 30%;
+    left: 10%;
+    z-index: 1001;
+    outline: 0;
   }
   .modal-header {
     border-bottom: 1px solid #e9eaec;
@@ -110,13 +88,17 @@
   }
   .modal-body {
     padding: 16px;
-    font-size: 12px;
+    font-size: 16px;
     color: #495060;
     line-height: 1.5;
+    overflow: auto;
+    scrollbar-base-color:#ff6600;
+    -webkit-overflow-scrolling: touch;
+    word-break:break-all;
   }
   .modal-footer {
     border-top: 1px solid #e9eaec;
-    padding: 12px 18px;
+    padding: 10px 18px;
     text-align: right;
   }
   .ivu-btn {
