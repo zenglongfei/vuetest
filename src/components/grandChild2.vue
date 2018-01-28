@@ -1,18 +1,14 @@
 <template>
   <div>
-    <a @click="showComponent" name="dynamic">动态组件一</a>
-    <a @click="showComponent" name="dynamic2">动态组件二</a>
-    <transition mode="out-in" name="fade">
-      <keep-alive>
-        <component :is="show"/>
-      </keep-alive>
-    </transition>
+    <a @click="showComponent" name="addPerson">添加成员组件</a>
+    <a @click="showMessage">modal测试</a>
+    <component :is="show"/>
   </div>
 </template>
 
 <script>
-  import dynamic from './dynamicComponent'
-  import dynamic2 from './dynamicComponent2'
+  import addPerson from './addPersonItem'
+  import modal from '../plugins/modalPlugin'
 
   export default {
     name: 'grand-child2',
@@ -22,12 +18,15 @@
       }
     },
     components: {
-      dynamic,
-      dynamic2
+      addPerson,
+      modal
     },
     methods: {
       showComponent (e) {
         this.show = e.target.getAttribute('name')
+      },
+      showMessage () {
+        this.$Modal()
       }
     }
   }
@@ -35,7 +34,7 @@
 
 <style scoped>
   div {
-  font-size: 18px;
+  font-size: 16px;
   margin-top: 20px;
 }
 </style>

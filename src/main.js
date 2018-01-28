@@ -5,12 +5,14 @@ import App from './App'
 import router from './router'
 import store from './store/index.js'
 import Vuex from 'vuex'
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
+
+import '../static/css/icon.css'
+import Dialog from './plugins/dialog.js'
+
+Vue.use(Vuex)
+Vue.use(Dialog)
 
 Vue.config.productionTip = false
-Vue.use(Vuex)
-Vue.use(ElementUI)
 
 /* eslint-disable no-new */
 new Vue({

@@ -8,30 +8,30 @@
     </div>
     <button @click="addArr">增加新成员</button>
     <transition name="slide-fade" mode="out-in">
-    <transition-group name="slide-fade" tag="table" border="15" mode="out-in" v-if="arr.length > 0">
-      <tr key='trr'>
-        <th>名字</th>
-        <th>性别</th>
-        <th>年龄</th>
-        <th>职业</th>
-        <th>删除</th>
-      </tr>
-      <tr v-for="(item, index) in arr" :key="item.id">
-        <td>{{item.name}}</td>
-        <td>{{item.sex}}</td>
-        <td>{{item.age}}</td>
-        <td>{{item.job}}</td>
-        <td @click="delPeo(index)">x</td>
-      </tr>
-    </transition-group>
-    <p v-else>没有成员</p>
+      <transition-group name="slide-fade" tag="table" border="15" mode="out-in" v-if="arr.length > 0">
+        <tr key='trr'>
+          <th>名字</th>
+          <th>性别</th>
+          <th>年龄</th>
+          <th>职业</th>
+          <th>删除</th>
+        </tr>
+        <tr v-for="(item, index) in arr" :key="item.id">
+          <td>{{item.name}}</td>
+          <td>{{item.sex}}</td>
+          <td>{{item.age}}</td>
+          <td>{{item.job}}</td>
+          <td @click="delPeo(index)">x</td>
+        </tr>
+      </transition-group>
+      <p v-else>没有成员</p>
     </transition>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'dynamic-component',
+    name: 'add-person-item',
     data () {
       return {
         arr: [
@@ -44,19 +44,32 @@
     methods: {
       addArr () {
         if (!this.newPeo.name) {
-          alert('请输入名字')
+          this.$Message({
+            content: '请输入名字',
+            type: 'error'
+          })
           return
         }
         if (!this.newPeo.age) {
-          alert('请输入年龄')
+          this.$Message({
+            content: '请输入年龄',
+            type: 'error'
+          })
           return
         }
         if (!this.newPeo.job) {
-          alert('请输入职业')
+          this.$Message({
+            content: '请输入职业',
+            type: 'error'
+          })
           return
         }
         this.arr.unshift(Object.assign({}, this.newPeo))
         this.newPeo = {id: +new Date(), name: '', sex: '男', age: '', job: ''}
+        this.$Message({
+          content: '添加新成员成功',
+          type: 'success'
+        })
       },
       delPeo (index) {
         this.arr.splice(index, 1)
