@@ -36,7 +36,7 @@
 <style scoped>
   .message-box {
     position: fixed;
-    z-index: 1010;
+    z-index: 999;
     width: 100%;
     pointer-events: none;
     text-align: center;

@@ -67,12 +67,22 @@
         this.arr.unshift(Object.assign({}, this.newPeo))
         this.newPeo = {id: +new Date(), name: '', sex: '男', age: '', job: ''}
         this.$Message({
-          content: '添加新成员成功',
-          type: 'success'
+          type: 'success',
+          content: '添加新成员成功'
         })
       },
       delPeo (index) {
-        this.arr.splice(index, 1)
+        this.$Modal({
+          type: 1,
+          content: '是否确定删除？',
+          sure: () => {
+            this.arr.splice(index, 1)
+            this.$Message({
+              type: 'success',
+              content: '删除成功'
+            })
+          }
+        })
       }
     }
   }

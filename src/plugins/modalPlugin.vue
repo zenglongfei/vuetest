@@ -1,7 +1,7 @@
 <template>
-  <div class="modal-box" v-if="show">
-    <div class="modal-bg" @touchmove.prevent></div>
-    <div class="modal-main" @touchmove.prevent>
+  <div class="modal-box" v-if="show" @touchmove.prevent>
+    <div class="modal-bg"></div>
+    <div class="modal-main">
       <div class="modal-header" v-if="type">
         <div class="modal-header-inner">{{title}}</div>
       </div>
@@ -63,7 +63,7 @@
     border-radius: 6px;
     background-clip: padding-box;
     position: fixed;
-    top: 30%;
+    top: 33%;
     left: 10%;
     z-index: 1001;
     outline: 0;
@@ -87,7 +87,7 @@
     text-align: left;
   }
   .modal-body {
-    padding: 16px;
+    padding: 18px;
     font-size: 16px;
     color: #495060;
     line-height: 1.5;
@@ -98,7 +98,7 @@
   }
   .modal-footer {
     border-top: 1px solid #e9eaec;
-    padding: 10px 18px;
+    padding: 7px 18px;
     text-align: right;
   }
   .ivu-btn {
