@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import childrenView from '@/components/childrenView'
 import learnComponent from '@/components/learnComponent'
-import grandChild from '@/components/grandChild'
+import axiosItem from '@/components/axiosItem'
 import grandChild2 from '@/components/grandChild2'
 
 Vue.use(Router)
@@ -20,9 +20,9 @@ export default new Router({
           name: 'childrenView',
           component: childrenView,
           children: [{
-            path: 'grandChild',
-            name: 'grandChild',
-            component: grandChild
+            path: 'axiosItem',
+            name: 'axiosItem',
+            component: axiosItem
           }, {
             path: 'grandChild2',
             name: 'grandChild2',

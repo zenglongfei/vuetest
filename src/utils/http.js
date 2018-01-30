@@ -26,7 +26,7 @@ axios.interceptors.response.use(function (response) {
 })
 
 export default {
-  axiosQuery (obj, fn) {
+  axiosQuery (Vue, obj, fnSuc, fnErr) {
     let setting = {
       // `url` 是用于请求的服务器 URL
       url: '', // 请求地址 必传
@@ -74,32 +74,43 @@ export default {
       // 如果设置为0，将不会 follow 任何重定向
       maxRedirects: 5 // 默认的
     }
+
     for (let x in setting) {
       if (obj.hasOwnProperty(x)) setting[x] = obj[x]
     }
     axios(setting)
       .then((response) => {
-        checkStatus(response, fn)
+        checkStatus(response, fnSuc, Vue)
       })
       .catch((error) => {
-        checkCode(error)
+        checkCode(error, fnErr, Vue)
       })
   }
 }
 
-function checkStatus (response, fn) {
+function checkStatus (response, fnSuc, Vue) {
   // loading
   // 如果http状态码正常，则直接返回数据
   if (response && (response.status === 200 || response.status === 304 || response.status === 400 || response.status === 0)) {
-    fn(response.data)
+    fnSuc(response.data)
     return
     // 如果不需要除了data之外的数据，可以直接 return response.data
   }
   // 异常状态下，把错误信息返回去
-  console.log(response.statusText)
+  Vue.$Modal({
+    content: response.statusText,
+    btn: ['确定']
+  })
 }
 
-function checkCode (error) {
+function checkCode (error, fnErr, Vue) {
   // 如果code异常(这里已经包括网络错误，服务器错误，后端抛出的错误)，可以弹出一个错误提示，告诉用户
-  console.log(error.message)
+  if (fnErr) {
+    fnErr(error)
+    return
+  }
+  Vue.$Modal({
+    content: error.message,
+    btn: ['确定']
+  })
 }

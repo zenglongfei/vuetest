@@ -38,7 +38,7 @@ export default {
       }
     },
     queryMusic () {
-      http.axiosQuery({
+      http.axiosQuery(this, {
         url: '../static/json/music.json'
       }, (oData) => {
         let result = oData.data

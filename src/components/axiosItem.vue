@@ -7,10 +7,10 @@
   // import api from '../utils/api.js'
 
   export default {
-    name: 'grand-child',
+    name: 'axios-item',
     methods: {
       queryTest () {
-        http.axiosQuery({
+        http.axiosQuery(this, {
           // url: api.right,
           // baseURL: 'https://cnodejs.org/api/v1'
           url: '/msps-fstore/ajs/highWorth/queryAssetManageList.do',
